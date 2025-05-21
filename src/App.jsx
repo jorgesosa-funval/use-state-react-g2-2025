@@ -8,10 +8,10 @@ export default function App() {
   return (
     <div className="container">
       <h1>DOM Manipulation Project</h1>
-        {/* {
+      {/* {
           TaskInput(items, setItems)
         } */}
-        
+
       <TaskInput
         items={items}
         setItems={setItems}
@@ -20,18 +20,22 @@ export default function App() {
       <ul className="items-container" id="items-list">
 
         {
-          items.map((task) => {
-            return (
-              <TaskItem
-                text={task.text}
-                id={task.id}
-              />
-            )
-          })
+          items.length > 0 ?
+            items.map((task) => {
+              return (
+                <TaskItem
+                  key={task.id}
+                  task={task}
+                  items={items}
+                  setItems={setItems}
+                />
+              )
+            })
+            :
+            <li className="empty-list">No items added yet. Add a new item above!</li>
         }
 
 
-        {/* <li className="empty-list">No items added yet. Add a new item above!</li> */}
       </ul>
     </div>
   )
@@ -40,11 +44,14 @@ export default function App() {
 
 let tasks = [
   {
-    id: 1,
-    text: "Jorge Sosa"
+    id: 20,
+    text: "Jorge Sosa",
+    completed: false
   },
   {
-    id: 2,
-    text: "Milton Morales"
+    id: 41,
+    text: "Milton Morales",
+    completed: false
   },
+
 ]

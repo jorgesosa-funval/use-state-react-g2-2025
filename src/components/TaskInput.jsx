@@ -1,23 +1,34 @@
-export default function TaskInput(props) {
-
+export default function TaskInput({ items, setItems }) {
+    // const {items , setItems} = props
     const handleSubmit = (e) => {
         e.preventDefault(); // evitar comportamiento por defecto
 
         const formdata = new FormData(e.target); // extraer valores del formulario
-
-        let newTask = {
-            id: 8,
-            text: formdata.get('item-input') // obtener valor especifico del formulario.
+        const inputValue = formdata.get('item-input').trim()
+        if (inputValue === "") {
+            alert("EL item no puede estar vació");
+            return;
         }
 
-        const items = props.items;
+        let newTask = {
+            id: items[items.length -1]?.id  + 1 || 1,
+            text: inputValue, // obtener valor especifico del formulario.
+            completed: false
+        }
 
-        const setItems = props.setItems;
-       
         setItems([...items, newTask])
 
         e.target.reset()
     }
+
+    const handleDelete = () => {
+        const confirmar = confirm("Seguro que deseas eliminar todas las tareas?");
+        if (confirmar === true) {
+            setItems([])
+        }
+        alert("Todas las tareas han sido eliminadas con éxito");
+    }
+
 
     return (
         <div>
@@ -37,7 +48,9 @@ export default function TaskInput(props) {
                 <button
                     className="btn btn-clear"
                     id="clear-btn"
-                    type="button">
+                    type="button"
+                    onClick={handleDelete}
+                >
                     Clear All
                 </button>
             </form>
