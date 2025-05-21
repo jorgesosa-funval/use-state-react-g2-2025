@@ -1,0 +1,186 @@
+:root {
+    --primary-color: #4a6fa5;
+    --secondary-color: #166088;
+    --accent-color: #16c79a;
+    --delete-color: #f05454;
+    --background-color: #f8f9fa;
+    --text-color: #212529;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.input-section {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+#item-input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    font-size: 1rem;
+}
+
+#item-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.btn {
+    cursor: pointer;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-add {
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 0 4px 4px 0;
+}
+
+.btn-add:hover {
+    background-color: #14b389;
+}
+
+.btn-clear {
+    background-color: var(--secondary-color);
+    color: white;
+    margin-left: 10px;
+}
+
+.btn-clear:hover {
+    background-color: #134e6f;
+}
+
+.items-container {
+    list-style-type: none;
+}
+
+.item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid var(--secondary-color);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.item.completed {
+    border-left-color: var(--accent-color);
+    opacity: 0.7;
+}
+
+.item.completed .item-text {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+.item-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-complete,
+.btn-delete {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+}
+
+.btn-complete {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.btn-complete:hover {
+    background-color: #14b389;
+}
+
+.btn-delete {
+    background-color: var(--delete-color);
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #e04141;
+}
+
+.empty-list {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+}
+
+.animation-fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+.animation-fade-out {
+    animation: fadeOut 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
